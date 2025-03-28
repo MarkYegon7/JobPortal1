@@ -463,6 +463,7 @@ h1, h2, h3, h4 {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     line-height: 1.5;
+    background-color: rgb(42 159 242 / 72%);
     border-radius: 0.3rem; }
   .home-section .search-jobs-form .btn-search > span {
     font-size: 1rem;
@@ -574,7 +575,7 @@ h1, h2, h3, h4 {
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(42, 52, 242, 0.9);
+      background: rgb(42 159 242 / 72%);
       z-index: 1; }
     .bg-image.overlay-primary > .container {
       position: relative;
@@ -588,7 +589,7 @@ h1, h2, h3, h4 {
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(65, 73, 233, 0.9);
+      background: rgb(42 159 242 / 72%);;
       z-index: 1; }
     .bg-image.overlay-blue > .container {
       position: relative;
