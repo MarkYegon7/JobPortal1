@@ -4,7 +4,7 @@
 
 <!-- HOME -->
 <section class="section-hero overlay inner-page bg-image"
-  style="background-image: url('{% static 'images/hero_1.jpg' %}');" id="home-section">
+  style="background-image: url('{% static 'images/hero_1.jp' %}');" id="home-section">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -42,10 +42,13 @@
         </div>
         {% endfor %}
         {% endif %}
-        <form method="POST" action="" class="p-4 border rounded">
+        <form method="POST" action="" class="p-4 border rounded" enctype="multipart/form-data">
           {% csrf_token %}
           {% for field in form %}
           {% if field.name == 'gender' %}
+
+        
+
           <div class="row form-group mb-4">
             <div class="col-md-12 mb-3 mb-md-0">
               <div class="form-check form-check-inline">

@@ -27,7 +27,8 @@ def home_view(request):
     page_number = request.GET.get('page',None)
     page_obj = paginator.get_page(page_number)
 
-    if request.is_ajax():
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+    # if request.is_ajax():
         job_lists=[]
         job_objects_list = page_obj.object_list.values()
         for job_list in job_objects_list:
@@ -92,11 +93,12 @@ def create_job_View(request):
     categories = Category.objects.all()
 
     if request.method == 'POST':
-
+        print(request.POST)
         if form.is_valid():
 
             instance = form.save(commit=False)
             instance.user = user
+            instance.is_published = True
             instance.save()
             # for save tags
             form.save_m2m()
@@ -105,7 +107,8 @@ def create_job_View(request):
             return redirect(reverse("jobapp:single-job", kwargs={
                                     'id': instance.id
                                     }))
-
+        else:
+            print(form.errors)
     context = {
         'form': form,
         'categories': categories

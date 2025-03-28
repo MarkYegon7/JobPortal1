@@ -6,7 +6,7 @@ from account.models import User
 
 
 class EmployeeRegistrationForm(UserCreationForm):
-
+    resume = forms.FileField(required=False, widget=forms.FileInput(attrs={'accept': '.pdf,.doc,.docx'}))
 
     def __init__(self, *args, **kwargs):
         UserCreationForm.__init__(self, *args, **kwargs)
@@ -48,7 +48,7 @@ class EmployeeRegistrationForm(UserCreationForm):
 
         model=User
 
-        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'gender']
+        fields = ['first_name', 'last_name', 'email', 'password1', 'password2', 'gender','resume']
 
     def clean_gender(self):
         gender = self.cleaned_data.get('gender')

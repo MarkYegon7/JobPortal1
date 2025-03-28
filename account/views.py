@@ -22,23 +22,36 @@ def get_success_url(request):
 
 
 
-def employee_registration(request):
+# def employee_registration(request):
 
-    """
-    Handle Employee Registration
+#     """
+#     Handle Employee Registration
 
-    """
-    form = EmployeeRegistrationForm(request.POST or None)
-    if form.is_valid():
-        form = form.save()
-        return redirect('account:login')
-    context={
+#     """
+#     form = EmployeeRegistrationForm(request.POST or None)
+#     if form.is_valid():
+#         form = form.save()
+#         return redirect('account:login')
+#     context={
         
-            'form':form
-        }
+#             'form':form
+#         }
 
-    return render(request,'account/employee-registration.html',context)
+#     return render(request,'account/employee-registration.html',context)
 
+def employee_registration(request):
+    if request.method == 'POST':
+        form = EmployeeRegistrationForm(request.POST, request.FILES)  # Include request.FILES
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.role = 'employee'
+            if 'resume' in request.FILES:  # Save the uploaded resume
+                user.resume = request.FILES['resume']
+            user.save()
+            return redirect('account:login')
+    else:
+        form = EmployeeRegistrationForm()
+    return render(request, 'account/employee-registration.html', {'form': form})
 
 def employer_registration(request):
 

@@ -22,6 +22,7 @@ class User(AbstractUser):
                               })
     role = models.CharField(choices=ROLE,  max_length=10)
     gender = models.CharField(choices=GENDER_TYPE, max_length=1)
+    resume = models.FileField(upload_to='resume/',null=True,blank=True)
 
 
     USERNAME_FIELD = "email"

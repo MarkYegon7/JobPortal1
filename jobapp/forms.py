@@ -4,13 +4,16 @@ from django.contrib.auth import get_user_model
 from django.contrib import auth
 
 from jobapp.models import *
-from ckeditor.widgets import CKEditorWidget
-
+#from ckeditor.widgets import CKEditorWidget
+#from .forms import JobForm
+from django_ckeditor_5.widgets import CKEditor5Widget
 
     
 
 class JobForm(forms.ModelForm):
-    
+    description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+    company_description = forms.CharField(widget=CKEditor5Widget(config_name='default'))
+
     def __init__(self, *args, **kwargs):
         forms.ModelForm.__init__(self, *args, **kwargs)
         self.fields['title'].label = "Job Title :"
