@@ -575,7 +575,7 @@ h1, h2, h3, h4 {
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgb(42 159 242 / 72%);
+      background: rgba(137, 186, 22, 0.9);
       z-index: 1; }
     .bg-image.overlay-primary > .container {
       position: relative;
@@ -589,7 +589,7 @@ h1, h2, h3, h4 {
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgb(42 159 242 / 72%);;
+      background: rgba(137, 186, 22, 0.9);
       z-index: 1; }
     .bg-image.overlay-blue > .container {
       position: relative;
